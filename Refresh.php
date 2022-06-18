@@ -7,14 +7,14 @@ $user_id = $_SESSION["user_id"];
 
 try{
     $db = connect();
-    $sql = 'UPDATE user_data
-            SET mypage_id = :mypage_id
-                pwd = :pwd
-                task1 = :task1
-                due1 = :due1
-                task2 = :task2
-                due2 = :due2
-                task3 = :task3
+    $sql = 'UPDATE company
+            SET mypage_id = :mypage_id,
+                pwd = :pwd,
+                task1 = :task1,
+                due1 = :due1,
+                task2 = :task2,
+                due2 = :due2,
+                task3 = :task3,
                 due3 = :due3
             WHERE id = :id';
 
@@ -29,6 +29,7 @@ try{
                             ':due2' => $_POST["due2_".$i],
                             ':task3' => $_POST["task3_".$i],
                             ':due3' => $_POST["due3_".$i],
+                            ':id' => $_POST["id_".$i]
     ));
     }
 
@@ -38,4 +39,4 @@ try{
 
 $db = NULL;
 
-header('Location:http://'.$_SERVER["HTTP_HOST"].dirname($_SERVER['PHP_SELF']).'/AllCampany.php');
+header('Location:http://'.$_SERVER["HTTP_HOST"].dirname($_SERVER['PHP_SELF']).'/AllCompany.php');
