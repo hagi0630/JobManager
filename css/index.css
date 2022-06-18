@@ -22,7 +22,7 @@ body {
     font-size: 10px;
   }
   
-  form input[type = "id"],form input[type = "text"] {
+  form input[type = "id"],form input[type = "text"],form input[type = "password"] {
     border: 0;
     background: none;
     display: block;
@@ -37,30 +37,10 @@ body {
     color: white;
   }
   
-  form input[type = "id"]:focus,form input[type = "text"]:focus {
+  form input[type = "id"]:focus,form input[type = "text"]:focus,form input[type= "password"]:focus {
     width: 280px;
     background-color: #000;
   }
-  form input[type = "id"],form input[type = "password"] {
-    border: 0;
-    background: none;
-    display: block;
-    margin: 20px auto;
-    border: 2px solid #ff69b4;
-    padding: 15px 10px;
-    width: 200px;
-    outline: none;
-    border-radius: 24px;
-    transition: 0.25s;
-    text-align: center;
-    color: white;
-  }
-  
-  form input[type = "id"]:focus,form input[type = "password"]:focus {
-    width: 280px;
-    background-color: #000;
-  }
-  
   form input[type = "submit"]{
     border: 0;
     background: none;
