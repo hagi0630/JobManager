@@ -3,9 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    <a href="UserRegist.php">新規登録</a>
-    <a href="Login.php">ログイン</a>
+    <form name="login_form">
+        <div class="login_form_top">
+          <h1>REGISTER or LOGIN</h1>
+        </div>
+        <div class="login_form_btm">
+          <input type="submit" name="botton" value="REGISTER" formaction="UserRegist.html">
+          <input type="submit" name="botton" value="LOGIN" formaction="Login.html">
+        </div>
+    </form>
+  
 </body>
 </html>

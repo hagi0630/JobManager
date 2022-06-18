@@ -21,7 +21,7 @@ try {
 
     } else {
         $msg = 'メールアドレスもしくはパスワードが間違っています。';
-        $link = '<a href="login.php">戻る</a>';
+        $link = '<a href="login.html">戻る</a>';
         ?>
         <h1><?php echo $msg; ?></h1>
         <?php echo $link;        
