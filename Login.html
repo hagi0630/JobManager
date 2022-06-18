@@ -6,33 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css">
 </head>
-<body>
-    
+<body>    
     <form method="POST" action="LoginConfirm.php" name="login_form">
         <div class="login_form_top">
             <h1>LOGIN</h1>
             <p>UserID、Passwordをご入力の上、「LOGIN」ボタンをクリックしてください。</p>
         </div>
         <div class="login_form_btm">
-            <input type="text" name="id" placeholder="UserID(20字以内)" maxlength="20">
-            <input type="text" name="pwd" placeholder="Password(20字以内)" maxlength="20">
+            <input type="text" name="id" placeholder="UserID(20字以内)" maxlength="20" required>
+            <input type="password" name="pwd" id="pwd1" placeholder="Password(20字以内)" maxlength="20" required>
             <input type="submit" name="botton" value="LOGIN">
-            <input type="submit" name="botton" value="BACK" formaction="index.html">
+            <input type="submit" name="botton" value="BACK" formaction="index.html" formnovalidate>
         </div>
     </form>
-    
-<!-- <h2>ログイン</h2> -->
-<!-- <form method="POST" action="LoginConfirm.php">
-        <p>
-            ユーザーID <br />
-            <input type="text" name="id" size="20" maxlength="20" />
-        </p><p>
-            パスワード <br />
-            <input type="text" name="pwd" size="20" maxlength="20" />
-        </p><p>
-            <input type="submit" value="ログイン" />
-        </p>
-    </form> -->
-
 </body>
 </html>

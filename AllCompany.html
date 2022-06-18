@@ -35,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -91,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="submit" value="最新の状態に更新">
   <table border="1">
     <tr>
-        <th>企業名</th><th>  マイページID  </th><th>マイページパスワード</th><th>タスク1</th><th>期限1</th><th>タスク2</th><th>期限2</th><th>タスク3</th><th>期限3</th>
+        <th></th><th>企業名</th><th>  マイページID  </th><th>マイページパスワード</th><th>タスク1</th><th>期限1</th><th>タスク2</th><th>期限2</th><th>タスク3</th><th>期限3</th>
     </tr>
     <?php
     try {
@@ -108,6 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $cnt++;
             ?>
         <tr>
+        <td><input type="hidden" name="id_<?php print ($cnt); ?>"  value="<?php print es($row["id"]); ?>" /></td>
             <td><a href="<?php es($row["url"]); ?>" target="_blank"><?php es($row["name"]); ?></td>
             <td><input type="text" name="mypage_id_<?php print ($cnt); ?>" value="<?php print es($row["mypage_id"]); ?>" size=15/></td>
             <td><input type="text" name="mypage_pwd_<?php print ($cnt); ?>" value="<?php print es($row["pwd"]); ?>" size=15/></td>
@@ -119,26 +121,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <td><input type="date" name="due3_<?php print ($cnt); ?>" value="<?php print es($row["due3"]); ?>" /></td>
         </tr>
         <?php
-         //empty()関数でチェック
-        $mypage_id = @$_POST["mypage_id_".$cnt];
-        $mypage_pwd = @$_POST["mypage_pwd_".$cnt];
-        $task1 = @$_POST["task1_".$cnt];
-        $due1 = @$_POST["due1_".$cnt];
-        $task2 = @$_POST["task2_".$cnt];
-        $due2 = @$_POST["due2_".$cnt];
-        $task3 = @$_POST["task3_".$cnt];
-        $due3 = @$_POST["due3_".$cnt];
+        //  //empty()関数でチェック
+        // $mypage_id = @$_POST["mypage_id_".$cnt];
+        // $mypage_pwd = @$_POST["mypage_pwd_".$cnt];
+        // $task1 = @$_POST["task1_".$cnt];
+        // $due1 = @$_POST["due1_".$cnt];
+        // $task2 = @$_POST["task2_".$cnt];
+        // $due2 = @$_POST["due2_".$cnt];
+        // $task3 = @$_POST["task3_".$cnt];
+        // $due3 = @$_POST["due3_".$cnt];
 
-        if (empty($mypage_id)) {
-            @$_POST["mypage_id_".$cnt] = NULL;
-        }
-        if (empty($mypage_pwd)){
-            @$_POST["mypage_pwd_".$cnt]=NULL;
-        }
-            @$_POST["task1_".$cnt] = NULL;
-            @$_POST["due1_".$cnt] = NULL;
-            
-        }
+        // if (empty($mypage_id)) {
+        //     @$_POST["mypage_id_".$cnt] = NULL;
+        // }
+        // if (empty($mypage_pwd)){
+        //     @$_POST["mypage_pwd_".$cnt]=NULL;
+        // }
+        // if (empty($task1)){
+        //     @$_POST["task1_".$cnt]=NULL;           
+        // }
+        // if (empty($due1)){
+        //     @$_POST["due1_".$cnt] = NULL;
+        // }
+        // if (empty($task2)){
+        //     @$_POST["task2_".$cnt]=NULL;           
+        // }
+        // if (empty($due2)){
+        //     @$_POST["due2_".$cnt] = NULL;
+        // }
+        // if (empty($task3)){
+        //     @$_POST["task3_".$cnt]=NULL;           
+        // }
+        // if (empty($due3)){
+        //     @$_POST["due3_".$cnt] = NULL;
+        // }
+    }
         ?>
         <input type="hidden" name="cnt" value="<?php print $cnt; ?>" />
         </form>
