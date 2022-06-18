@@ -20,7 +20,7 @@ try {
         header('Location: http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/AllCompany.php');
 
     } else {
-        $msg = 'メールアドレスもしくはパスワードが間違っています。';
+        $msg = 'ユーザーIDもしくはパスワードが間違っています。';
         $link = '<a href="login.html">戻る</a>';
         ?>
         <h1><?php echo $msg; ?></h1>
