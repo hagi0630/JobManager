@@ -1,8 +1,9 @@
 <?php
+// データベースに接続。ユーザーネームとパスワードは変更必要
 function connect(){
     $dsn = "mysql:dbname=job;host=localhost;charset=utf8";
     $usr = "root";
-    $passwd = "hagi991742";
+    $passwd = "hagi";
 
     try{
     $db = new PDO($dsn,$usr,$passwd);

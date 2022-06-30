@@ -1,40 +1,4 @@
-<?php
-session_start();
-
-require_once "Dbmanager.php";
-require_once "Escape.php";
-
-$db=connect();
-$stt = $db->prepare('SELECT * FROM company');
-$stt->execute();
-$cnt=0;
-while ($row=$stt->fetch(PDO::FETCH_ASSOC)){
-    $cnt++;
-}
-
-$user_id = $_SESSION["user_id"];
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $db = connect();
-    $sql = 'INSERT INTO company VALUES(:id,:user_id, :name,:url,:mypage_id,:pwd,NULL,NULL,NULL,NULL,NULL,NULL)';
-  
-    $stt = $db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
-    $stt->execute(array(':id' => $cnt,
-                        ':user_id' => $user_id,
-                        ':name' => $_POST['company_name'],
-                        ':url' => $_POST["mypage_url"],
-                        ':mypage_id' => $_POST['mypage_id'],
-                        ':pwd' => $_POST["mypage_pwd"],
-                        // ':task1' => $_POST["task1"],
-                        // ':due1' => $_POST["due1"],                    
-                        // ':task2' => $_POST["task2"],
-                        // ':due2' => $_POST["due2"],                    
-                        // ':task3' => $_POST["task3"],
-                        // ':due3' => $_POST["due3"],                    
-                        ));  
-    $db = NULL;
-}
-
-?>
+<!-- 全ての企業を一覧表示する。 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <a href = "Schedule.php">スケージュール画面へ</a>
-    <form method="POST" action='AllCompany.php'>
+    <form method="POST" action='AddCompany.php'>
         <p>
             <input type="hidden" name="id" value=<?php print $cnt; ?>>
         </p>
@@ -66,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
 <br>
 
+<!-- 削除機能。できれば下の会社一覧の各会社の横に削除機能をつけたいが、全体をRefresh.phpに送るformにしてしまっているのでどうすればいいか不明 -->
 <form method="POST" action="Delete.php">
 削除したい企業名
 <input type="text" name="company_name" size="20" maxlength="20" />
@@ -75,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <br>
 <br>
-
+<!-- 「最新の状態に更新」でRefresh.phpに送る -->
     <form method="POST" action="Refresh.php">
         <input type="submit" value="最新の状態に更新">
     
@@ -85,6 +50,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </tr>
     <?php
     try {
+        require_once "Dbmanager.php";
+        require_once "Escape.php";
+        session_start();
+        $user_id = $_SESSION["user_id"];
+// そのユーザーが登録しているcompanyを持ってくる
         $db = connect();
         $sql = "SELECT * 
                 FROM company
@@ -94,8 +64,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindValue(':user_id', $user_id);
         $stmt->execute();
         $cnt=0;
+
          foreach ($stmt as $row) {
             $cnt++;
+            // $cntで上から順番に番号振る。Refresh.phpで区別するため
             ?>
         <tr>
         <input type="hidden" name="id_<?php print ($cnt); ?>"  value="<?php print es($row["id"]); ?>" />

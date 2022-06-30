@@ -1,3 +1,4 @@
+<!-- スケジュール一覧。期限が短い順に並べる。AllCompany.phpから飛べる -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -45,6 +46,7 @@ try {
     $stmt->execute();
     $due_array=[];
      foreach ($stmt as $row) {
+        // タスク1、タスク2、タスク3は別々にarrayに入れて、それを期限順に並べる
         $add_array = [
              [
               "id" => $row["id"],
@@ -79,7 +81,7 @@ try {
             ];
             $due_array = array_merge($due_array,$add_array);
      }
-
+// ソート
      array_multisort( array_map( "strtotime", array_column( $due_array, "due" ) ), SORT_ASC, $due_array ) ;
 
      ?>
@@ -90,10 +92,12 @@ try {
 
      <?php
      foreach ($due_array as $row_array) {
+        // 期限が入っていない物はcontinue
         if ($row_array["due"]=="0000-00-00" or $row_array["due"]==NULL){
             continue;
         }
         ?>
+        <!-- 一覧表示 -->
         <tr>
             <td><a href="<?php es($row_array["url"]); ?>" target="_blank"><?php es($row_array["name"]); ?></td>
             <td><?php print es($row_array["mypage_id"]); ?></td>

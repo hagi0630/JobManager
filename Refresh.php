@@ -1,3 +1,4 @@
+<!-- 企業一覧ページで更新されたものを反映させるプログラム。AllCompany.phpからPOST -->
 <?php
 require_once "DbManager.php";
 
@@ -20,6 +21,7 @@ try{
 
     $stt = $db->prepare($sql,array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
 
+    // $iで上から何番目かが分かるので全て更新
     for ($i=1;$i<=$_POST["cnt"];$i++){
         $stt->execute(array(':mypage_id' => $_POST['mypage_id_'.$i],
                             ':pwd'=> $_POST['mypage_pwd_'.$i],

@@ -1,6 +1,6 @@
 <?php
+// データベースから会社を削除する処理。AllCompany.phpからPOST
 session_start();
-
 require_once "Dbmanager.php";
 require_once "Escape.php";
 
@@ -9,7 +9,7 @@ $user_id = $_SESSION["user_id"];
 try {
     $db = connect();
     $company_name = $_POST["company_name"];
-
+// 削除
     $sql = 'DELETE FROM company
             WHERE user_id=:user_id AND name=:company_name';
 

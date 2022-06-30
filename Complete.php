@@ -1,4 +1,5 @@
 <?php
+// タスクの官僚が押されたときの処理。Schedule.phpからPOST
 require_once "DbManager.php";
 
 session_start();
@@ -6,6 +7,7 @@ $user_id = $_SESSION["user_id"];
 
 
 try{
+    // タスク1の完了が押されたとき。タスク2をタスク1に、タスク3をタスク2に移動
     $db = connect();
     if ($_POST["task_number"]=="1"){
     $sql = 'SELECT task2,due2,task3,due3
@@ -15,6 +17,7 @@ try{
     $stt = $db->prepare($sql);
     $stt->bindValue(':id', $_POST["id"]);
     $stt->execute();
+// １つに決まるのでforeachを使う必要はないが、そうでないやり方が分からないのでこう書いている。改良希望
     foreach ($stt as $row) {
     $task2 = $row["task2"];
     $task3 = $row["task3"];
@@ -39,6 +42,7 @@ try{
     ':id' => intval($_POST["id"])
     ));
     }
+    // タスク2の完了が押されたとき。タスク3をタスク2に移動
     if ($_POST["task_number"]=="2"){
         $sql = 'SELECT task3,due3
         FROM company
@@ -47,6 +51,7 @@ try{
 $stt = $db->prepare($sql);
 $stt->bindValue(':id', $_POST["id"]);
 $stt->execute();
+// １つに決まるのでforeachを使う必要はないが、そうでないやり方が分からないのでこう書いている。改良希望
 foreach ($stt as $row) {
     $task3 = $row["task3"];
     $due3 = $row["due3"];
@@ -68,6 +73,7 @@ $stt->execute(array(
 ));
 
     }
+    // タスク3が押されたときの処理。タスク3を削除
     if ($_POST["task_number"]=="3"){
         $sql = 'UPDATE company
         SET task3=NULL,
