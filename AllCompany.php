@@ -3,7 +3,7 @@ require_once "Dbmanager.php";
         require_once "Escape.php";
         session_start();
         $user_id = $_SESSION["user_id"];
-// そのユーザーが登録しているcompanyを持ってくる
+//次のID用にcompanyに登録している数をカウント
         $db = connect();
         $sql = "SELECT * 
                 FROM company;
