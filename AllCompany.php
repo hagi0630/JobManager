@@ -3,7 +3,7 @@ require_once "Dbmanager.php";
         require_once "Escape.php";
         session_start();
         $user_id = $_SESSION["user_id"];
-//次のID用にcompanyに登録している数をカウント
+//次のID用にcompanyに登録しているmaxidを調べる
                 $db = connect();
         $sql = "SELECT * 
                 FROM company";
