@@ -4,17 +4,17 @@ require_once "Dbmanager.php";
         session_start();
         $user_id = $_SESSION["user_id"];
 //次のID用にcompanyに登録している数をカウント
-        $db = connect();
+                $db = connect();
         $sql = "SELECT * 
-                FROM company;
+                FROM company";
         $stmt = $db->prepare($sql);
-        $stmt->bindValue(':user_id', $user_id);
         $stmt->execute();
         $cnt=0;
 
          foreach ($stmt as $row) {
-            $cnt++;
+            $cnt = max($cnt,$row["id"]);
          }
+
 ?>
 <!-- 全ての企業を一覧表示する。 -->
 <!DOCTYPE html>
