@@ -14,7 +14,7 @@ require_once "Dbmanager.php";
          foreach ($stmt as $row) {
             $cnt = max($cnt,$row["id"]);
          }
-
+$cnt++;
 ?>
 <!-- 全ての企業を一覧表示する。 -->
 <!DOCTYPE html>
