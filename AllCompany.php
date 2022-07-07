@@ -24,7 +24,7 @@ $cnt++;
     <meta charset="UTF-8">
     <title>企業一覧</title>
     <div class="header">
-      <div class="header-logo">がくめも！！</div>
+      <div class="header-logo">JobManger</div>
       <div class="header-list">
       <div class="header-listiamge"><img src="css/Furasuko.gif" alt=""></div> 
           <div class="header-list1">ホーム</div>
@@ -36,7 +36,6 @@ $cnt++;
 </head>
 
 <body>
-    <a href = "Schedule.php">スケージュール画面へ</a>
     <form method="POST" action='AddCompany.php'>
         <p>
             <input type="hidden" name="id" value=<?php print $cnt; ?>>
