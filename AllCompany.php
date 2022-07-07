@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="css/AllCompany.css">
 <?php
 require_once "Dbmanager.php";
         require_once "Escape.php";
