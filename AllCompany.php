@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="css/AllCompany.css">
 <?php
 require_once "Dbmanager.php";
         require_once "Escape.php";
@@ -22,9 +23,19 @@ $cnt++;
 <head>
     <meta charset="UTF-8">
     <title>企業一覧</title>
+    <div class="header">
+      <div class="header-logo">JobManger</div>
+      <div class="header-list">
+      <div class="header-listiamge"><img src="css/Furasuko.gif" alt=""></div> 
+          <div class="header-list1">ホーム</div>
+          <div class="header-list2"><a href = "Schedule.php">スケジュール</a></div>
+          <div class="header-list3">お問い合わせ</div>
+          <div class="header-list4">ログアウト</div>
+      </div>
+    </div>
 </head>
+
 <body>
-    <a href = "Schedule.php">スケージュール画面へ</a>
     <form method="POST" action='AddCompany.php'>
         <p>
             <input type="hidden" name="id" value=<?php print $cnt; ?>>
