@@ -28,7 +28,7 @@ $cnt++;
       <div class="header-list">
       <div class="header-listiamge"><img src="css/Furasuko.gif" alt=""></div> 
           <div class="header-list1">ホーム</div>
-          <div class="header-list2"><a href = "Schedule.php">スケジュールへ</a></div>
+          <div class="header-list2"><a href = "Schedule.php">スケジュール</a></div>
           <div class="header-list3">お問い合わせ</div>
           <div class="header-list4">ログアウト</div>
       </div>
